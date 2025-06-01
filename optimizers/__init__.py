@@ -6,6 +6,7 @@ import torch.optim as optim
 from .adabound import AdaBound
 from .adam import Adam_LRD
 from .adam_rm import AdamResetMomentum
+from .adamasym import AdamAsym
 from .coolmomentum import Coolmomentum
 from .radam import RAdam_LRD, RAdam
 from .rmsprop import RMSprop, RMSprop_LRD
@@ -42,6 +43,12 @@ optimizer_defaults = {
         'amsgrad': False,
     }),
     'adam_rm': (AdamResetMomentum, 'AdamResetMomentum', {
+        'lr': 0.001,
+        'weight_decay': 5e-4,
+        'betas': (0.9, 0.999),
+        'eps': 1e-8,
+    }),
+    'adam_asym': (AdamAsym, 'AdamAsym', {
         'lr': 0.001,
         'weight_decay': 5e-4,
         'betas': (0.9, 0.999),

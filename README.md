@@ -7,6 +7,9 @@ If you want your algorithm to be included open an issue here.
 
 Requirements: Python 3.6+, Pytorch 1.3+, tqdm
 
+Run:
+`python train_cifar10.py --optim=adam --model=resnet18 --wandb-project=optimizer-evaluation`
+
 Supported optimizers:
 
 1. Stochastic Gradient Descent with Momentum (SGDM)
