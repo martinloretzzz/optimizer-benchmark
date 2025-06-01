@@ -10,7 +10,7 @@ import torch.backends.cudnn as cudnn
 import torchvision
 import torchvision.transforms as transforms
 
-from models.resnet_cifar10 import ResNet34
+from models.resnet_cifar10 import ResNet34, ResNet18
 from optimizers import parse_optimizer, supported_optimizers
 
 
@@ -18,7 +18,7 @@ def parse_args(argv=None):
     """Parse command line arguments"""
     parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
     parser.add_argument('--model', default='resnet34', type=str, help='model',
-                        choices=['resnet34'])
+                        choices=['resnet34', 'resnet18'])
     parser.add_argument('--optim', type=str, help='optimizer', required=True,
                         choices=supported_optimizers())
     parser.add_argument('--seed', type=int, default=123, help='Random seed to use. default=123.')
@@ -59,6 +59,7 @@ def build_dataset():
 
 def build_model(model, device):
     net = {
+        'resnet18': ResNet18,
         'resnet34': ResNet34,
     }[model]()
     net = net.to(device)
